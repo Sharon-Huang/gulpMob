@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- build:css -->
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- endbuild -->
+    <script src="./js/flexible.min.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+</head>
+<body>
+<div class="container">
+  <div class="andorid" id="andorid">
+      <button class="btn-download">
+        <a onclick='downLink("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3893146502,314297687&fm=26&gp=0.jpg")'>立即下载</a>
+      </button>
+  </div>
+  <div class="ios" id="ios">
+    <dl class="list">
+      <dd class="item">
+        <div class="video">
+          <video  src="./test.mp4" controls="controls">
+            您的浏览器不支持播放视频
+          </video>
+        </div>
+        <div class="item-r">
+          <div class="item-r-t">
+              <h6>稳定版下载<i class="intro"></i></h6>
+              <div class="item-icon">
+                <span class="success">不掉签</span>
+                <span class="success">有声音</span>
+                <span class="error">需要苹果账号</span>
+              </div>
+          </div>
+          <div class="item-r-b">
+            <a  onclick='downLink("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3893146502,314297687&fm=26&gp=0.jpg")'></a>
+            <p class="gray">通过TestFlight安装的选择<br/>此方式更新
+            </p>
+          </div>
+        </div>
+      </dd>
+      <dd class="item">
+        <div class="video">
+          <video  src="./test.mp4" controls="controls">
+            您的浏览器不支持播放视频
+          </video>
+        </div>
+        <div class="item-r">
+          <div class="item-r-t">
+              <h6>授信版下载</h6>
+              <div class="item-icon">
+                <span class="error">会掉签</span>
+                <span class="error">无声音</span>
+                <span class="success">不需要苹果账号</span>
+              </div>
+          </div>
+          <div class="item-r-b">
+            <a  onclick='downLink("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3893146502,314297687&fm=26&gp=0.jpg")'></a>
+            <p class="gray">通过信任证书安装的选择<br/>此方式更新</p>
+          </div>
+        </div>
+      </dd>
+      <dd class="item">
+        <div class="video">
+          <video  src="./test.mp4" controls="controls">
+            您的浏览器不支持播放视频
+          </video>
+          <span class="video-icon">￥15</span>
+        </div>
+        <div class="item-r">
+          <div class="item-r-t">
+              <h6>超级版下载</h6>
+              <div class="item-icon">
+                <span class="success">不掉签</span>
+                <span class="success">有声音</span>
+                <span class="success">不需要苹果账号</span>
+                <span class="error">要收费</span>
+              </div>
+          </div>
+          <div class="item-r-b">
+            <a class="btn-down-pay" onclick='downLink("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3893146502,314297687&fm=26&gp=0.jpg")'></a>
+            <p class="gray">由签名商收取15元费用<br/>仅收取一次可重复下载安装</p>
+          </div>
+        </div>
+      </dd>
+    </dl>
+  </div>
+  <footer class="footer"></footer>
+</div>
+<div class="box" id="box">
+  <div class="shadow" >
+    <div class="arrow"></div>
+    <p class="shadow_tips">温馨提示</p>
+    <p class="shadow_operation">1.点击右上角菜单</p>
+    <p class="shadow_operation">选择【浏览器】打开，在操作</p>
+    <span class="shadow_close" id="shadow_close" onclick="toloadFnc()">关闭</span>
+  </div>
+</div>
+</body>
+<script>
+window.onload = function(){
+  changeView();
+}
+window.onresize = function () {
+  changeView();
+}
+function downLink(url){
+  var isWeixin = navigator.userAgent.indexOf('MicroMessenger') > -1;
+  if(isWeixin){
+    $('box').style.display = 'block';
+    return;
+  }
+  window.location.href= url
+}
+function $(id){
+  return document.getElementById(id)
+}
+function changeView(){
+  if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+    $("andorid").style.display = 'none'
+    $("ios").style.display = 'block'
+    return
+  } else if (/(Android)/i.test(navigator.userAgent)) {
+    $("ios").style.display = 'none'
+    $("andorid").style.display = 'block'
+    return
+  }
+  $("ios").style.display = 'none'
+  $("andorid").style.display = 'block'
+}
+function toloadFnc(){
+  document.getElementById('box').style.display = 'none';
+}
+</script>
+</html>
