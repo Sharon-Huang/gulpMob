@@ -4,7 +4,8 @@
 1. 安装依赖
 
 ```shell
-  cnpm install
+ npm install 或
+ cnpm install(淘宝镜像)
 ```
 
 2. 运行命令
